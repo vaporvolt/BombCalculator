@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  background-color: #121212;
+  color: yellow;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bomb-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  justify-content: center;
+  transform: scale(1.1); /* ✅ Slightly smaller now */
+}
+
+#themeToggle {
+  margin-bottom: 16px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #333;
+  color: yellow;
+  border: none;
+}
+
+#themeToggle:hover {
+  background-color: #444;
+}
+
+#timer {
+  font-size: 2rem;
+  color: #00ffff;
+  margin-bottom: 14px;
+}
+
+#display {
+  width: 100%;
+  max-width: 450px;
+  background: black;
+  color: yellow;
+  font-size: 2.5rem;
+  text-align: right;
+  padding: 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 3px solid #555;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 450px;
+}
+
+button {
+  padding: 25px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: #222;
+  color: yellow;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+.wires {
+  grid-column: span 4;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wire {
+  width: 90px;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.green { background-color: green; }
+.red { background-color: red; }
+.blue { background-color: blue; }
+
+.exploded #display {
+  background-color: darkred;
+  color: white;
+  animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(-3px); }
+  25% { transform: translateX(3px); }
+  50% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+  100% { transform: translateX(-3px); }
+}
+
+/* LED Blinking Light */
+.led {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.led.red {
+  background-color: red;
+  box-shadow: 0 0 10px red;
+  animation: blink 1s infinite;
+}
+
+.led.green {
+  background-color: green;
+  box-shadow: 0 0 10px green;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Light Theme */
+body.light-theme {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+body.light-theme #display {
+  background-color: white;
+  color: black;
+}
+
+body.light-theme button {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+body.light-theme button:hover {
+  background-color: #ccc;
+}
+
+body.light-theme #timer {
+  color: black;
+}
